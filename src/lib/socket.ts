@@ -4,7 +4,7 @@ import { io } from 'socket.io-client'
 type Message = { author: string; content: string }
 
 export const useSocket = () => {
-  const socket = io('http://localhost:3000')
+  const socket = io(import.meta.env.VITE_SOCKET_URL as string)
   const state = reactive({
     connected: false,
     messages: [] as Message[]
