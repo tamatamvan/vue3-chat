@@ -19,13 +19,12 @@ export const useSocket = () => {
   })
 
   socket.on('message', (message: Message) => {
-    console.log('received message', message)
     state.messages.push(message)
   })
 
   const sendMessage = (message: Message) => {
-    console.log('sending message', message)
     socket.emit('message', message)
+    state.messages.push(message)
   }
 
   return {
